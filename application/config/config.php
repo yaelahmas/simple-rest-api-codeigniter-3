@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/codeigniter-restserver-3/';
+$config['base_url'] = 'http://localhost/simple-rest-api-codeigniter-3/';
 
 /*
 |--------------------------------------------------------------------------
