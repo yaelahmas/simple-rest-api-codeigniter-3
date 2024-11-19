@@ -21,17 +21,17 @@ class Mahasiswa extends REST_Controller
 
     public function index_get()
     {
-        $mahasiswa = $this->db->get('mahasiswa')->result_array();
+
         $id = $this->get('id');
 
         if ($id === null) {
-            if ($mahasiswa) {
+            if ($this->mahasiswa->get_data()) {
                 $this->response([
                     'status' => [
                         'code' => REST_Controller::HTTP_OK,
                         'message' => 'OK'
                     ],
-                    'results' => $mahasiswa
+                    'results' => $this->mahasiswa->get_data()
                 ], REST_Controller::HTTP_OK);
             } else {
                 $this->response([
@@ -42,13 +42,13 @@ class Mahasiswa extends REST_Controller
                 ], REST_Controller::HTTP_NOT_FOUND);
             }
         } else {
-            if (array_key_exists($id, $mahasiswa)) {
+            if ($this->mahasiswa->get_data($id)) {
                 $this->response([
                     'status' => [
                         'code' => REST_Controller::HTTP_OK,
                         'message' => 'OK'
                     ],
-                    'results' => $mahasiswa[$id]
+                    'results' => $this->mahasiswa->get_data($id)
                 ], REST_Controller::HTTP_OK);
             } else {
                 $this->response([
